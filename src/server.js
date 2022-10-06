@@ -1,17 +1,19 @@
 const express = require("express")
-const cors = require('cors')
+const cors = require("cors")
 
 const app = express()
 
 //Routes
-const accountInfo = require("./routes/accountInfo.route")
+const account = require("./routes/account.route")
+const moreLost = require("./routes/market.route")
 
 //Middlewares del json
 app.use(cors())
 app.use(express.json())
 
 //Middleware de routes
-app.use("/accountInfo", accountInfo)
+app.use("/account", account)
+app.use("/moreLost", moreLost)
 
 //General
 app.get("/", (request, response)=>{

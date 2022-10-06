@@ -1,5 +1,5 @@
 const express = require("express")
-const { accounts, accountInfo } = require("../usecases/accoutInfo.usecase")
+const { accounts, accountInfo } = require("../usecases/accout.usecase")
 
 //Endpoints
 const router = express.Router()

@@ -1,6 +1,6 @@
-require('dotenv').config()
-const Accounts = require("../models/accounts.model")
-const { Spot } = require('@binance/connector')
+require("dotenv").config()
+const Accounts = require("../models/account.model")
+const { Spot } = require("@binance/connector")
 
 
 // Get All Accounts
