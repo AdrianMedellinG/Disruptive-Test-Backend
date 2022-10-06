@@ -10,7 +10,7 @@ router.get("/", async (request, response) => {
         const data = await accounts(query)
         response.json({
             sucess: true,
-            account
+            data
         })
     } catch (error) {
         response.status(400)
@@ -28,7 +28,7 @@ router.get("/:id", async (request, response) => {
         const data = await accountInfo(params.id)
         response.json({
             sucess: true,
-            account
+            data
         })
     } catch (error) {
         response.status(400)

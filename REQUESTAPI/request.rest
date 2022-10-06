@@ -1,0 +1,16 @@
+### Check conection to our server
+GET http://localhost:8080
+
+
+### GET all accounts in our database(MongoDB)
+GET http://localhost:8080/account
+
+
+### GET account information in our database(MongoDB) using the "_id" value
+### GET http://localhost:8080/account/:id
+GET http://localhost:8080/account/633e195bbb83d94bdc94fa0e
+
+### POST new order using the "_id" value as params and this endpoint automatically get
+### the blockchaing with more lost with in 24 hrs. and set as LIMIT type.
+### POST http://localhost:8080/account/:id
+POST http://localhost:8080/account/633e195bbb83d94bdc94fa0e

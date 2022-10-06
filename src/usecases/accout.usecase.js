@@ -2,7 +2,7 @@ require("dotenv").config()
 const mongoose = require('mongoose');
 const createError = require('http-errors')
 const Accounts = require("../models/account.model")
-const market = require("../usecases/market.usecase")
+const Market = require("../usecases/market.usecase")
 const { Spot } = require("@binance/connector")
 
 
@@ -27,7 +27,7 @@ const accountInfo = async (id) => {
 const newOrderLimit = async (id) => {
     const user = await Accounts.findById(id)
     const client = new Spot(user.apiKey, user.secretKey, { baseURL: process.env.BASE_API_URL })
-    const moreLost = await market.moreLost(1)
+    const moreLost = await Market.moreLost(1)
     const clientResponse = await client.newOrder(moreLost[0].symbol, 'BUY', 'LIMIT', {
         price: '350',
         quantity: 1,
