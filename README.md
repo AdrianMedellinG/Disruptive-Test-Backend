@@ -4,7 +4,7 @@ This is a test Backend API using the Binance API to Disruptive by Adrian Medelli
 
 ## Installation
 
-Clone the repository fist then install all the depencencies
+Clone the repository first then install all the depencencies
 
 ```bash
 npm install
