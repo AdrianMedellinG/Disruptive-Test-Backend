@@ -7,12 +7,13 @@ function sortNumber(a, b) {
 }
 
 // Get 24hr more value lost of blockchaing
-const moreLost = () => {
+const moreLost = (n) => {
+    if(!n){n=10}
     return fetch("https://api.binance.com/api/v3/ticker/24hr")
         .then((res) => {
             return res.json()
         })
-        .then((res) => res.sort(sortNumber).slice(0, 10))
+        .then((res) => res.sort(sortNumber).slice(0, n))
         .catch((error) => {
             console.log(error)
         })
