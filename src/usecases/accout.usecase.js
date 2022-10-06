@@ -1,4 +1,5 @@
 require("dotenv").config()
+const mongoose = require('mongoose');
 const createError = require('http-errors')
 const Accounts = require("../models/account.model")
 const market = require("../usecases/market.usecase")
@@ -13,7 +14,9 @@ const accounts = (filters) => {
 
 // Get account information
 const accountInfo = async (id) => {
+    const verifyId = new mongoose.Types.ObjectId(id);
     const user = await Accounts.findById(id)
+    if(!user) throw createError(401, 'User not found.')
     const client = new Spot(user.apiKey, user.secretKey, { baseURL: process.env.BASE_API_URL })
     const clientResponse = await client.account().then(response => response.data)
     return clientResponse
@@ -21,18 +24,17 @@ const accountInfo = async (id) => {
 
 
 // Place a new order
-const newOrderLimit = async (id, query) => {
+const newOrderLimit = async (id) => {
     const user = await Accounts.findById(id)
     const client = new Spot(user.apiKey, user.secretKey, { baseURL: process.env.BASE_API_URL })
     const moreLost = await market.moreLost(1)
-    console.log(moreLost[0].symbol)
-    client.newOrder('BNBUSDT', 'BUY', 'LIMIT', {
+    const clientResponse = await client.newOrder(moreLost[0].symbol, 'BUY', 'LIMIT', {
         price: '350',
         quantity: 1,
         timeInForce: 'GTC'
       }).then(response => response.data)
-        .catch(error => client.logger.error(error))
-
+        .catch(error => error.message)
+        return clientResponse
 }
 
 

@@ -7,12 +7,10 @@ const router = express.Router()
 router.get("/", async (request, response) => {
     try {
         const{query} = request
-        const account = await accounts(query)
+        const data = await accounts(query)
         response.json({
             sucess: true, 
-            data: {
-                account
-            }
+            account
         })
     }catch(error) {
         response.status(400)
@@ -27,12 +25,10 @@ router.get("/", async (request, response) => {
 router.get("/:id", async (request, response) => {
     try {
         const { params} = request
-        const account = await accountInfo(params.id)
+        const data = await accountInfo(params.id)
         response.json({
             sucess: true, 
-            data: {
-                account
-            }
+            account
         })
     }catch(error) {
         response.status(400)
@@ -45,13 +41,11 @@ router.get("/:id", async (request, response) => {
 
 router.post("/:id", async (request, response) => {
     try {
-        const { query, params } = request
-        const account = await newOrderLimit(params.id, query)
+        const { params } = request
+        const data = await newOrderLimit(params.id)
         response.json({
             sucess: true, 
-            data: {
-                account
-            }
+            data
         })
     }catch(error) {
         response.status(400)
