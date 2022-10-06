@@ -23,7 +23,7 @@ const accountInfo = async (id) => {
 }
 
 
-// Place a new order
+// Place a new order(type LIMIT & to the blockchaing with more lost within 24hrs)
 const newOrderLimit = async (id) => {
     const user = await Accounts.findById(id)
     const client = new Spot(user.apiKey, user.secretKey, { baseURL: process.env.BASE_API_URL })
