@@ -16,8 +16,8 @@ app.use("/account", account)
 app.use("/moreLost", moreLost)
 
 //General
-app.get("/", (request, response)=>{
-    response.json({message: "Bienvenido a nuestra API de DISRUPTIVE-TEST"})
+app.get("/", (request, response) => {
+    response.json({ message: "Bienvenido a nuestra API de DISRUPTIVE-TEST" })
 })
 
 module.exports = app

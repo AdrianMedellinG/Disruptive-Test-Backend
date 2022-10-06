@@ -14,13 +14,13 @@ const URL = `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`
 
 //Conectando a base de datos
 mongoose.connect(URL)
-.then(()=>{
-    console.log("Conectado a la base de datos de mongo")
-    //Levantando el server
-    app.listen(PORT, () =>{
-        console.log("Server Listening on port:", PORT)
+    .then(() => {
+        console.log("Conectado a la base de datos de mongo")
+        //Levantando el server
+        app.listen(PORT, () => {
+            console.log("Server Listening on port:", PORT)
+        })
     })
-})
-.catch((error)=>{
-    console.log("Error",error)
-})
+    .catch((error) => {
+        console.log("Error", error)
+    })

@@ -6,16 +6,16 @@ const router = express.Router()
 
 router.get("/", async (request, response) => {
     try {
-        const{query} = request
+        const { query } = request
         const data = await accounts(query)
         response.json({
-            sucess: true, 
+            sucess: true,
             account
         })
-    }catch(error) {
+    } catch (error) {
         response.status(400)
         response.json({
-            sucess: false, 
+            sucess: false,
             message: error.message
         })
     }
@@ -24,16 +24,16 @@ router.get("/", async (request, response) => {
 
 router.get("/:id", async (request, response) => {
     try {
-        const { params} = request
+        const { params } = request
         const data = await accountInfo(params.id)
         response.json({
-            sucess: true, 
+            sucess: true,
             account
         })
-    }catch(error) {
+    } catch (error) {
         response.status(400)
         response.json({
-            sucess: false, 
+            sucess: false,
             message: error.message
         })
     }
@@ -44,13 +44,13 @@ router.post("/:id", async (request, response) => {
         const { params } = request
         const data = await newOrderLimit(params.id)
         response.json({
-            sucess: true, 
+            sucess: true,
             data
         })
-    }catch(error) {
+    } catch (error) {
         response.status(400)
         response.json({
-            sucess: false, 
+            sucess: false,
             message: error.message
         })
     }

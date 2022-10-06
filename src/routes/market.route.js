@@ -6,16 +6,16 @@ const router = express.Router()
 
 router.get("/", async (request, response) => {
     try {
-        
+
         const data = await moreLost()
         response.json({
-            sucess: true, 
+            sucess: true,
             data
         })
-    }catch(error) {
+    } catch (error) {
         response.status(400)
         response.json({
-            sucess: false, 
+            sucess: false,
             message: error.message
         })
     }
