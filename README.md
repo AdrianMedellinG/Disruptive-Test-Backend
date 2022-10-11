@@ -16,6 +16,41 @@ Set the Environment variables into the .env file. If you wanto to know the varia
 ## Endpoints
 You can find the rest endopints in /REQUESTAPI/request.rest
 
+
+### Check conection to our server
+GET http://localhost:8080
+
+### GET all accounts in our database(MongoDB)
+GET http://localhost:8080/account/getAll
+
+### POST a new account in our database(MongoDB) you need to send JSON (email, apiKey and secretKey)
+### You need to take the apiKey and secretKey from https://testnet.binance.vision/
+POST http://localhost:8080/account
+content-type: application/json
+
+{
+	"email": "test@test.com",
+	"apiKey":"xlJdAyCzPPal11Z01KiH2SEirhxSrq**Example**aUsxl7J6ca97wK93qOQLQP1111",
+	"secretKey": "gdaXkJ8BblB6wa6v54VHWdbB243**Example**L2X1kTGVSsuT3GrMtbYMRIxOZ1111"
+}
+
+### GET account information in our database(MongoDB) using the "_id" value
+### GET http://localhost:8080/account/:id
+GET http://localhost:8080/account/633e195bbb83d94bdc94fa0e
+
+### GET account information NO MONGO REQUIRED
+### GET http://localhost:8080/account?apiKey=xlJdAyCzPPal11Z01KiH2SEirhx**Example**holaUsxl7J6ca97wK93qOQLQP1111&secretKey=gdaXkJ8BblB6wa6v54**Example**243LdxJI5iNL2X1kTGVSsuT3GrMtbYMRIxOZdmon
+GET http://localhost:8080/account?apiKey=xlJdAyCzPPal11Z01KiH2SEirhxSrqqs**Example**sxl7J6ca97wK93qOQLQP1111&secretKey=gdaXkJ8BblB6wa6v54VHWdb**Example**iNL2X1kTGVSsuT3GrMtbYMRIxOZdmon
+
+
+### POST new order using the "_id" value as params and this endpoint automatically get
+### the blockchaing with more lost with in 24 hrs. and set as LIMIT type.
+### POST http://localhost:8080/account/:id
+POST http://localhost:8080/account/633e1**Example**83dc94fa0e
+
+### GET top 10 Blockchain with more lost within 24 hrs
+GET http://localhost:8080/moreLost
+
 # Author
 
 Adrian Medellin
